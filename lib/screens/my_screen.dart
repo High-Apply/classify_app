@@ -3,7 +3,6 @@ import 'package:classify_app/screens/hscredit_screen.dart';
 import 'package:classify_app/screens/setting_screen.dart';
 import 'package:classify_app/screens/timetable_screen.dart';
 import 'package:classify_app/styles/custom_color_style.dart';
-import 'package:classify_app/styles/custom_font_style.dart';
 import 'package:flutter/material.dart';
 
 class MyScreen extends StatefulWidget {
@@ -46,9 +45,9 @@ class _MyScreenState extends State<MyScreen> {
         onTap: _onItemTapped,
         unselectedItemColor: CustomColor.subtext,
         selectedItemColor: CustomColor.lightGreen,
-        selectedLabelStyle: CustomTextStyle.footnote,
-        unselectedLabelStyle: CustomTextStyle.footnote,
-        type: BottomNavigationBarType.shifting,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }

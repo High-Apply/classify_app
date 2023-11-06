@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Classify',
       theme: ThemeData(),
       home: const MyScreen(title: "Classify Login"),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
