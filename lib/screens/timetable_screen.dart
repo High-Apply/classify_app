@@ -1,3 +1,4 @@
+import 'package:classify_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class TimetableScreen extends StatefulWidget {
@@ -11,7 +12,11 @@ class _TimetableScreenState extends State<TimetableScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text('timetable screen')),
+      appBar: MyAppBar(
+        title: '주간 시간표',
+      ),
+      body: Center(child: Text("timetable Screen")),
+      backgroundColor: Colors.white,
     );
   }
 }

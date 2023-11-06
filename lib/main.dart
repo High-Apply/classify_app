@@ -1,4 +1,4 @@
-import 'package:classify_app/screens/login_screen.dart';
+import 'package:classify_app/screens/my_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Classify',
       theme: ThemeData(),
-      home: const MyLoginScreen(title: "Classify Login"),
+      home: const MyScreen(title: "Classify Login"),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
