@@ -1,3 +1,5 @@
+import 'package:classify_app/screens/timetable/tt_day_screen.dart';
+import 'package:classify_app/screens/timetable/tt_lunch_screen.dart';
 import 'package:classify_app/screens/timetable/tt_week_screen.dart';
 import 'package:classify_app/widgets/tabbar/tabs.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +44,7 @@ class _TimetableScreenState extends State<TimetableScreen>
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(kToolbarHeight),
             child: SizedBox(
-              width: 300,
+              width: 350,
               child: TabBar(
                   isScrollable: true,
                   indicatorColor: Colors.black,
@@ -68,15 +70,9 @@ class _TimetableScreenState extends State<TimetableScreen>
           ),
         ),
       ),
-      body: TabBarView(controller: _tabController, children: const [
-        TTWeekScreen(),
-        Center(
-          child: Text("IT IS MAC"),
-        ),
-        Center(
-          child: Text("IT IS RESTAURANT"),
-        ),
-      ]),
+      body: TabBarView(
+          controller: _tabController,
+          children: const [TTWeekScreen(), TTDayScreen(), TTLunchScreen()]),
     );
   }
 }
