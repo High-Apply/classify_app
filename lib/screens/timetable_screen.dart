@@ -1,4 +1,4 @@
-import 'package:classify_app/styles/custom_font_style.dart';
+import 'package:classify_app/screens/timetable/tt_week_screen.dart';
 import 'package:classify_app/widgets/tabbar/tabs.dart';
 import 'package:flutter/material.dart';
 
@@ -33,20 +33,18 @@ class _TimetableScreenState extends State<TimetableScreen>
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(110),
         child: AppBar(
-          backgroundColor: Colors.white,
           elevation: 0,
           leadingWidth: 16,
           leading: Container(),
-          title: Text(
+          title: const Text(
             '주간 시간표',
-            style: CustomTextStyle.displayLarge
-                .copyWith(fontWeight: FontWeight.bold),
           ),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(kToolbarHeight),
             child: SizedBox(
               width: 300,
               child: TabBar(
+                  isScrollable: true,
                   indicatorColor: Colors.black,
                   controller: _tabController,
                   onTap: (idx) {
@@ -71,9 +69,7 @@ class _TimetableScreenState extends State<TimetableScreen>
         ),
       ),
       body: TabBarView(controller: _tabController, children: const [
-        Center(
-          child: Text("IT IS ANDROID"),
-        ),
+        TTWeekScreen(),
         Center(
           child: Text("IT IS MAC"),
         ),
@@ -81,7 +77,6 @@ class _TimetableScreenState extends State<TimetableScreen>
           child: Text("IT IS RESTAURANT"),
         ),
       ]),
-      backgroundColor: Colors.white,
     );
   }
 }

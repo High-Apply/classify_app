@@ -1,4 +1,5 @@
 import 'package:classify_app/screens/my_screen.dart';
+import 'package:classify_app/styles/custom_theme_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Classify',
-      theme: ThemeData(),
+      theme: lightThemeData(),
+      darkTheme: darkThemeData(),
+      themeMode: ThemeMode.light,
       home: const MyScreen(title: "Classify Login"),
       debugShowCheckedModeBanner: false,
     );
