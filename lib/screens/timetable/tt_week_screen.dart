@@ -1,6 +1,5 @@
-import 'package:classify_app/styles/custom_color_style.dart';
-import 'package:classify_app/styles/custom_font_style.dart';
 import 'package:classify_app/utils/get_week_number.dart';
+import 'package:classify_app/widgets/sizedbox/day_week_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -30,62 +29,12 @@ class _TTWeekScreenState extends State<TTWeekScreen> {
             height: 26,
           ),
           Container(
-            margin: const EdgeInsets.only(left: 60),
+            margin: const EdgeInsets.only(left: 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(
-                  width: 70,
-                  child: Text(
-                    "월",
-                    style: weekNumber == 1
-                        ? CustomTextStyle.subhead.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: CustomColor.lightGreen)
-                        : CustomTextStyle.subhead,
-                  ),
-                ),
-                SizedBox(
-                  width: 70,
-                  child: Text(
-                    "화",
-                    style: weekNumber == 2
-                        ? CustomTextStyle.subhead.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: CustomColor.lightGreen)
-                        : CustomTextStyle.subhead,
-                  ),
-                ),
-                SizedBox(
-                  width: 70,
-                  child: Text(
-                    "수",
-                    style: weekNumber == 2
-                        ? CustomTextStyle.subhead
-                            .copyWith(fontWeight: FontWeight.bold)
-                        : CustomTextStyle.subhead,
-                  ),
-                ),
-                SizedBox(
-                  width: 70,
-                  child: Text(
-                    "목",
-                    style: weekNumber == 2
-                        ? CustomTextStyle.subhead
-                            .copyWith(fontWeight: FontWeight.bold)
-                        : CustomTextStyle.subhead,
-                  ),
-                ),
-                SizedBox(
-                  width: 70,
-                  child: Text(
-                    "금",
-                    style: weekNumber == 2
-                        ? CustomTextStyle.subhead
-                            .copyWith(fontWeight: FontWeight.bold)
-                        : CustomTextStyle.subhead,
-                  ),
-                ),
+                for (int i = 1; i <= dayOfWeeks.length; i++)
+                  DayWeekSizedBox(weekNumber: weekNumber, idx: i)
               ],
             ),
           )
