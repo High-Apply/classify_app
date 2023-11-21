@@ -1,4 +1,4 @@
-import 'package:classify_app/screens/my_screen.dart';
+import 'package:classify_app/screens/onboarding_screen.dart';
 import 'package:classify_app/styles/custom_theme_data.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: lightThemeData(),
       darkTheme: darkThemeData(),
       themeMode: ThemeMode.light,
-      home: const MyScreen(title: "Classify Login"),
+      home: const OnboardingScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

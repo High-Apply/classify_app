@@ -15,12 +15,14 @@ ThemeData lightThemeData() {
       indicatorSize: TabBarIndicatorSize.label,
       tabAlignment: TabAlignment.start,
     ),
+    fontFamily: 'Pretendard'
   );
 }
 
 ThemeData darkThemeData() {
   return ThemeData(
       scaffoldBackgroundColor: CustomColor.darkGray,
+      fontFamily: 'Pretendard',
       appBarTheme: const AppBarTheme(backgroundColor: CustomColor.darkGray),
       tabBarTheme: const TabBarTheme(indicatorColor: Colors.white));
 }
