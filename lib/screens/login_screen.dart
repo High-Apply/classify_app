@@ -1,8 +1,10 @@
+import 'package:classify_app/providers/auth_provider.dart';
 import 'package:classify_app/screens/my_screen.dart';
 import 'package:classify_app/styles/custom_color_style.dart';
 import 'package:classify_app/styles/custom_font_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class MyLoginScreen extends StatefulWidget {
   const MyLoginScreen({super.key});
@@ -13,11 +15,13 @@ class MyLoginScreen extends StatefulWidget {
 
 class _MyLoginScreenState extends State<MyLoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _id = '';
-  String _password = '';
 
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(context, listen: false);
+    var id = authProvider.id;
+    var password = authProvider.password;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -50,7 +54,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
               labelText: '학번을 입력해주세요.',
               onSaved: (val) {
                 setState(() {
-                  _id = val;
+                  authProvider.setId(val);
                 });
               },
               validator: (val) {
@@ -69,7 +73,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
               isPassword: true,
               onSaved: (val) {
                 setState(() {
-                  _password = val;
+                  authProvider.setPassword(val);
                 });
               },
               validator: (val) {
@@ -82,7 +86,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
             const SizedBox(
               height: 35,
             ),
-            LoginButton(formKey: _formKey, id: _id, password: _password),
+            LoginButton(formKey: _formKey, id: id, password: password),
             const Expanded(child: SizedBox()),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -168,10 +172,21 @@ class LoginButton extends StatelessWidget {
         height: 50,
         child: OutlinedButton(
           onPressed: () async {
+            _formKey.currentState!.save();
             if (_formKey.currentState!.validate()) {
-              _formKey.currentState!.save();
               print(_id);
               print(_password);
+              if (_id == "10823" && _password == "0000") {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return MyScreen(
+                    title: _id,
+                  );
+                }));
+              } else {
+                const snackBar =
+                    SnackBar(content: Text('ID OR PASSWORD IS WRONG'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             }
           },
           style: const ButtonStyle(
