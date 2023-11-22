@@ -19,12 +19,16 @@ class DayWeekSizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Text(
-        dayOfWeeks[idx - 1]!,
-        style: weekNumber == idx
-            ? CustomTextStyle.subhead
-                .copyWith(fontWeight: FontWeight.bold, color: Colors.black)
-            : null,
+      width: (MediaQuery
+          .of(context)
+          .size
+          .width / 7),
+      child: SizedBox(
+        child: Text(
+          dayOfWeeks[idx - 1]!,
+          style: CustomTextStyle.subhead,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

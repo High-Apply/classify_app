@@ -11,7 +11,6 @@ Future<List<Lesson>> fetchTimetable({required int studentId}) async {
       List<dynamic> data = json.decode(utf8.decode(res.bodyBytes));
       final List<Lesson> result =
           data.map((lesson) => Lesson.fromJson(lesson)).toList();
-      print(result);
       return result;
     } else {
       throw Exception('Failed to Load Data');

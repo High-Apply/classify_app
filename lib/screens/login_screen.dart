@@ -24,6 +24,7 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -98,13 +99,18 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
               child: SizedBox(),
             ),
             Expanded(
-              flex: 1,
               child: Container(
                   width: (double.infinity),
                   padding: const EdgeInsets.symmetric(horizontal: 24),
-                  height: 50,
+                  height: 60,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return MyScreen(
+                          title: id,
+                        );
+                      }));
+                    },
                     style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll<Color>(Colors.white)),
@@ -130,7 +136,9 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       style: const ButtonStyle(
                         side: MaterialStatePropertyAll<BorderSide>(
                             BorderSide.none),
@@ -169,13 +177,16 @@ class LoginButton extends StatelessWidget {
     return Container(
         width: (double.infinity),
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        height: 50,
+        height: 60,
         child: OutlinedButton(
           onPressed: () async {
-            _formKey.currentState!.save();
-            if (_formKey.currentState!.validate()) {
-              print(_id);
-              print(_password);
+            final formKeyState = _formKey.currentState!;
+            if (formKeyState.validate()) {
+              formKeyState.save();
+              FocusScope.of(context).unfocus();
+
+              //현재 버튼 클릭 이후 값이 저장되는 문제가 발생함.
+              print(_id + _password);
               if (_id == "10823" && _password == "0000") {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return MyScreen(
